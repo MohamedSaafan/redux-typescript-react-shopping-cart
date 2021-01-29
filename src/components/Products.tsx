@@ -3,8 +3,10 @@ import Product from "./Item";
 import "./Products.css";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useActions } from "../hooks/useActions";
-
-const Products: React.FC = (props) => {
+interface IProps {
+  history: any;
+}
+const Products: React.FC<IProps> = (props) => {
   const bindedActionCreators = useActions();
   const { loading, error, data } = useTypedSelector((state) => state.products);
 
@@ -36,6 +38,7 @@ const Products: React.FC = (props) => {
             category={item.category}
             image={item.image}
             key={item.id}
+            history={props.history}
           />
         );
       })}

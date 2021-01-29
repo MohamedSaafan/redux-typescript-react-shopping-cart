@@ -42,29 +42,31 @@ export const cartReducer = (
         totalPrice: remainingPriceAfterDeletion,
       };
 
-    // case ActionTypes.DECREASE_NUMBER_OF_ITEMS_IN_CART: {
-    //   const oldItem = state.items.find((item) => item.id === action.payload.id);
-    //   const filteredItems = state.items.filter(
-    //     (item) => item.id !== action.payload.id
-    //   );
-    //   if (oldItem) {
-    //     oldItem!.numberOfItems = oldItem!.numberOfItems - 1;
-    //   }
-    //   return {
-    //     items: [...filteredItems, oldItem as ICartItem],
-    //     totalPrice: state.totalPrice - action.payload?.price,
-    //   };
-    // }
-    // case ActionTypes.INCREASE_NUMBER_OF_ITEMS_IN_CART:
-    //   const oldItem = state.items.find((item) => item.id === action.payload.id);
-    //   const filteredItems = state.items.filter(
-    //     (item) => item.id !== action.payload.id
-    //   );
-    //   oldItem!.numberOfItems = oldItem!.numberOfItems + 1;
-    //   return {
-    //     items: [...filteredItems, oldItem as ICartItem],
-    //     totalPrice: state.totalPrice + action.payload.price,
-    //   };
+    case ActionTypes.DECREASE_NUMBER_OF_ITEMS_IN_CART: {
+      const oldItem = state.items.find((item) => item.id === action.payload.id);
+      const filteredItems = state.items.filter(
+        (item) => item.id !== action.payload.id
+      );
+      if (oldItem) {
+        oldItem!.numberOfItems = oldItem!.numberOfItems - 1;
+      }
+      return {
+        items: [...filteredItems, oldItem as ICartItem],
+        totalPrice: state.totalPrice - action.payload.price,
+      };
+    }
+    case ActionTypes.INCREASE_NUMBER_OF_ITEMS_IN_CART:
+      const oldItem = state.items.find((item) => item.id === action.payload.id);
+      const filteredItems = state.items.filter(
+        (item) => item.id !== action.payload.id
+      );
+      if (oldItem) {
+        oldItem!.numberOfItems = oldItem!.numberOfItems + 1;
+      }
+      return {
+        items: [...filteredItems, oldItem as ICartItem],
+        totalPrice: state.totalPrice + action.payload.price,
+      };
 
     default:
       return state;

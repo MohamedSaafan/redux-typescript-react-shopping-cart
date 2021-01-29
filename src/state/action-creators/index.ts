@@ -60,3 +60,26 @@ export const RemoveItemFromCart = (id: number, price: number) => (
     },
   });
 };
+
+export const IncreaseNumberOfItemsByOne = (id: number, price: number) => (
+  dispatch: Dispatch<CartActions>
+) => {
+  dispatch({
+    type: ActionTypes.INCREASE_NUMBER_OF_ITEMS_IN_CART,
+    payload: {
+      id,
+      price,
+    },
+  });
+};
+export const DecreaseNumberOfItemsByOne = (id: number, price: number) => (
+  dispatch: Dispatch<CartActions>
+) => {
+  dispatch({
+    type: ActionTypes.DECREASE_NUMBER_OF_ITEMS_IN_CART,
+    payload: {
+      id,
+      price,
+    },
+  });
+};

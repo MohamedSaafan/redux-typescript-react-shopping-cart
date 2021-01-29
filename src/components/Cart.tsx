@@ -10,7 +10,7 @@ const Cart: React.FC = (props) => {
       <div>
         <h3 className='centered mb-4 ml-5'>Total Price is, {totalPrice}</h3>
         <div className='row'>
-          {items.map(({ id, title, image, price }) => {
+          {items.map(({ id, title, image, price, numberOfItems }) => {
             return (
               <CartItem
                 id={id}
@@ -18,6 +18,7 @@ const Cart: React.FC = (props) => {
                 image={image}
                 title={title}
                 price={price}
+                numberOfItems={numberOfItems}
               />
             );
           })}

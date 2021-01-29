@@ -9,6 +9,7 @@ interface ItemProps {
   description: string;
   category: string;
   image: string;
+  history: any;
 }
 
 const Product: React.FC<ItemProps> = ({
@@ -18,10 +19,12 @@ const Product: React.FC<ItemProps> = ({
   description,
   price,
   category,
+  history,
 }) => {
   const bindedActionCreators = useActions();
   const handleAddToCart = () => {
     bindedActionCreators.AddItemToCart(id, +price, image, title);
+    history.push("/cart");
   };
   return (
     <div className='card col-3 mb-3' style={{ width: "18rem" }}>
