@@ -3,22 +3,25 @@ import { useTypedSelector } from "../hooks/useTypedSelector";
 import CartItem from "./CartItem";
 
 const Cart: React.FC = (props) => {
-  const { items } = useTypedSelector((state) => state.cart);
+  const { items, totalPrice } = useTypedSelector((state) => state.cart);
 
   if (items.length > 0) {
     return (
-      <div className='row'>
-        {items.map(({ id, title, image, price }) => {
-          return (
-            <CartItem
-              id={id}
-              key={id}
-              image={image}
-              title={title}
-              price={price}
-            />
-          );
-        })}
+      <div>
+        <h3 className='centered mb-4 ml-5'>Total Price is, {totalPrice}</h3>
+        <div className='row'>
+          {items.map(({ id, title, image, price }) => {
+            return (
+              <CartItem
+                id={id}
+                key={id}
+                image={image}
+                title={title}
+                price={price}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

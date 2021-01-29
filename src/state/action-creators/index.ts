@@ -48,3 +48,15 @@ export const AddItemToCart = (
     payload: { id, price, image, title },
   });
 };
+
+export const RemoveItemFromCart = (id: number, price: number) => (
+  dispatch: Dispatch<CartActions>
+) => {
+  dispatch({
+    type: ActionTypes.REMOVE_CART_ITEM,
+    payload: {
+      id,
+      price,
+    },
+  });
+};
